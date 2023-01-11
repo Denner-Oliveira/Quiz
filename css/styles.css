@@ -1,0 +1,164 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Helvetica;
+}
+
+body{
+  background-color: blue;
+  color: white
+}
+
+.hide{
+  display:none !important
+}
+
+#main-title{
+  padding:40px 0;
+  text-align:center;
+  background-color: rgb(94, 68, 243);
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
+
+/*CONTAINER DE PONTOS*/
+
+#score-container{
+  background-color: rgb(137, 212, 247);
+  color:black;
+  text-align:center;
+  width:300px;
+  margin:50px auto;
+  padding:25px;
+  border-radius:20px;
+}
+
+#score-container p{
+  font-size: 14px;
+  margin:20px 0;
+}
+
+#score-container #display-score{
+  font-size:32px;
+  font-weight:bold;
+}
+
+#correct-answers{
+  font-weight: bold;
+  color:limegreen;
+}
+
+#question-qty{
+  font-weight: bold;
+  color:blue;
+}
+
+#restart{
+  background-color:orange;
+  color:white;
+  font-weight:bold;
+  height:50px;
+  border-radius:25px;
+  border:2px solid transparent;
+  width:180px;
+  text-transform: uppercase;
+  margin-top:20px;
+  cursor:pointer;
+  transition:.5s;
+}
+
+#restart:hover{
+  background-color:transparent;
+  border-color:orange;
+  color:orange
+}
+
+/*CONTAINER DO QUIZ*/
+
+#quizz-container{
+  width:500px;
+  margin:50px auto;
+  border:1px solid #cddde8;
+  padding: 25px;
+  border-radius:25px;
+}
+
+#question{
+  text-align:center;
+  margin-bottom:25px;
+  font-size: 20px;
+}
+
+#question-number{
+  font-weight: bold;
+}
+
+#answers-box button{
+  display:flex;
+  align-items: center;
+  margin:15px 0;
+  width: 300p;
+  height:50px;
+  border-radius:25px;
+  background-color: orange;
+  border:2px solid transparent;
+  text-align: left;
+  padding-left:5px;
+  color:#000;
+  cursor:pointer;
+  transition: .5s;
+}
+
+#answers-box button:hover{
+  color:white;
+}
+
+#answers-box .btn-letter{
+  font-size:30px;
+  font-weight: bold;
+  color:#fff;
+  border-radius:50%;
+  line-height: 40px;
+  text-align: center;
+  text-transform: uppercase;
+  flex:1 1 0;
+  max-width:40px;
+}
+
+.question-answer{
+  flex:1 1 0;
+  margin-left: 10px;
+  font-size:16px;
+  padding-right: 10px;
+}
+
+#quizz-container .wrong-answer,
+#quizz-container .wrong-answer .btn-letter{
+  background-color:red;
+  color:white;
+}
+
+#quizz-container .correct-answer,
+#quizz-container .correct-answer .btn-letter{
+  background-color:lawngreen;
+  color:white;
+}
+
+/*RESPONSIVO*/
+
+@media (max-width:450px){
+
+  #quizz-container{
+    border:none;
+    width:100%
+  }
+
+  #answers-box button{
+    width:100%
+  }
+
+  #score-container{
+    width:90%
+  }
+}
