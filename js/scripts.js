@@ -74,22 +74,20 @@ let perguntas = [
       },
 ]
 
-let num;
 let rodada;
-let acertos = 0
+let acertos;
 
 function init(){
-  num = 0
-  rodada = num;
-  questaoDaVez(num);
+  rodada = 0;acertos = 0;
+  questaoDaVez(rodada);
 }
 
-function questaoDaVez(rodada){
+function questaoDaVez(a){
   numQuestão.textContent++
-  textoQuestao.textContent = perguntas[rodada].question;
+  textoQuestao.textContent = perguntas[a].question;
   botoes.forEach(element=>{ 
     let indice = botoes.indexOf(element);
-    element.childNodes[2].textContent = perguntas[rodada].answers[indice].answer
+    element.childNodes[2].textContent = perguntas[a].answers[indice].answer
   })
   respostas();
 }
@@ -132,13 +130,11 @@ function resultado(){
   quizz.classList.add('hide');
   final.classList.remove('hide');
   verificaAcertos(acertos)
-
 }
 
 function verificaAcertos(x){
   let por = x * 100
   let result = por / perguntas.length
-  
   if(x >= 2){
     usuario.textContent = 'PARABÉNS!'
   }else{
@@ -146,7 +142,6 @@ function verificaAcertos(x){
   }
   txtAcertos.textContent = `De ${perguntas.length} perguntas você acertou ${x}`
   porAcertos.textContent = `${result.toFixed(2)}%`
-
 }
 
 init()
