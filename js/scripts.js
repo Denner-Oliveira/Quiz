@@ -1,14 +1,16 @@
-let quizz = document.querySelector('#quizz-container')
-let numQuestão = document.querySelector('#question-number')
-let valorQuestao = Number(document.querySelector('#question-number').textContent)
-let textoQuestao = document.querySelector('#question-text')
-let botoes = [...document.querySelectorAll('#answers-box button')]
-let final = document.querySelector('.resultado')
-let txtAcertos = document.querySelector('#txtAcertos')
-let porAcertos = document.querySelector('#porAcertos')
-let usuario = document.querySelector('#paraUsuario')
-let botao = document.querySelector('#botao')
+// - Variáveis - //
+const quizz = document.querySelector('#quizz-container')
+const numQuestão = document.querySelector('#question-number')
+const valorQuestao = Number(document.querySelector('#question-number').textContent)
+const textoQuestao = document.querySelector('#question-text')
+const botoes = [...document.querySelectorAll('#answers-box button')]
+const final = document.querySelector('.resultado')
+const txtAcertos = document.querySelector('#txtAcertos')
+const porAcertos = document.querySelector('#porAcertos')
+const usuario = document.querySelector('#paraUsuario')
+const botao = document.querySelector('#botao')
 
+// - Perguntas - //
 let perguntas = [
     {
         "question": "PHP foi desenvolvido para qual fim?",
@@ -75,14 +77,17 @@ let perguntas = [
       },
 ]
 
+// - Listener para o botão de início - //
 botao.addEventListener('click',init)
 
+// - Variáveis necessárias para funções - //
 let rodada;
 let acertos;
 
+// - Função de início (zera as variáveis do jogo) - //
 function init(){
-  botao.classList.add('hide');
-  quizz.classList.remove('hide');
+  botao.classList.toggle('hide');
+  quizz.classList.toggle('hide');
   final.classList.add('hide')
   rodada = 0;
   acertos = 0;
@@ -90,20 +95,23 @@ function init(){
   questaoDaVez(rodada);
 }
 
-function questaoDaVez(a){
+// - Verifica as perguntas para chamar o Array com perguntas e respostas - //
+function questaoDaVez(num){
   numQuestão.textContent++
-  textoQuestao.textContent = perguntas[a].question;
+  textoQuestao.textContent = perguntas[num].question;
   botoes.forEach(element=>{ 
     let indice = botoes.indexOf(element);
-    element.childNodes[2].textContent = perguntas[a].answers[indice].answer
+    element.childNodes[2].textContent = perguntas[num].answers[indice].answer
   })
   respostas();
 }
 
+// - Funcção para escrever a pergunta e as alternativas - //
 function respostas(){
   botoes.forEach(a=> a.addEventListener('click',verificaResposta))
 }
 
+// - Função que verifica a resposta dada pelo usuário (adiciona classes caso certo ou errado)- //
 function verificaResposta(){  
   let indice = botoes.indexOf(this);
   if(perguntas[rodada].answers[indice].correct == true){
@@ -121,10 +129,10 @@ function verificaResposta(){
       } 
     },800)
   }else{
-    botoes.forEach(element => element.classList.add('wrong-answer'))
+    this.classList.add('wrong-answer')
     rodada++;
     setTimeout(()=>{
-      botoes.forEach(element=> element.classList.remove('wrong-answer'))
+      this.classList.remove('wrong-answer')
       if(rodada == 3){
         resultado()
       }else{
@@ -134,22 +142,23 @@ function verificaResposta(){
   }
 }
 
+//- Função que trroca o valor do display da div do quiz e do resultado - //
 function resultado(){
-  quizz.classList.add('hide');
-  final.classList.remove('hide');
+  quizz.classList.toggle('hide');
+  final.classList.toggle('hide');
   verificaAcertos(acertos)
 }
 
+// - Função que calcula a quantidade de acertos e imprime o valor - //
 function verificaAcertos(x){
-  let por = x * 100
-  let result = por / perguntas.length
+  let result = ((x * 100) / perguntas.length).toFixed(2)
   if(x >= 2){
     usuario.textContent = 'PARABÉNS!'
   }else{
     usuario.textContent = 'Podemos melhorar!'
   }
   txtAcertos.textContent = `De ${perguntas.length} perguntas você acertou ${x}`
-  porAcertos.textContent = `${result.toFixed(2)}%`
+  porAcertos.textContent = `${result}%`
   setTimeout(()=>{
     botao.textContent = 'Recomeçar!'
     botao.classList.remove('hide')

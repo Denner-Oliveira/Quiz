@@ -27,21 +27,23 @@ body{
 #botao{
   background-color: rgb(94, 68, 243);
   border-radius: 20px;
-  border: 2px solid black;
+  border: 3px solid white;
+  color:white;
   height: 45px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 150px auto;
-  font-size: 25pt;
+  font-size: 20pt;
   width: 200px;
 }
 
 #botao:hover{
-  border:1px solid white;
+  
   cursor:pointer;
-  background-color: rgb(19, 3, 112);
-  color:white
+  background-color: rgb(28, 5, 160);
+  font-size: 25pt;
+  
 }
 
 /*CONTAINER DE PONTOS*/
@@ -135,7 +137,7 @@ body{
 
 #answers-box button:hover{
   color:white;
-  background-color: rgb(209, 138, 6);
+
 }
 
 #answers-box .btn-letter{
