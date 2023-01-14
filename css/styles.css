@@ -22,6 +22,28 @@ body{
   border-bottom-right-radius: 50px;
 }
 
+/* BOTÃO DE INÍCIO */   
+
+#botao{
+  background-color: rgb(94, 68, 243);
+  border-radius: 20px;
+  border: 2px solid black;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 150px auto;
+  font-size: 25pt;
+  width: 200px;
+}
+
+#botao:hover{
+  border:1px solid white;
+  cursor:pointer;
+  background-color: rgb(19, 3, 112);
+  color:white
+}
+
 /*CONTAINER DE PONTOS*/
 
 #score-container{
@@ -113,6 +135,7 @@ body{
 
 #answers-box button:hover{
   color:white;
+  background-color: rgb(209, 138, 6);
 }
 
 #answers-box .btn-letter{
@@ -148,7 +171,7 @@ body{
 
 /* RESULTADO */
 
-#resultado{
+.resultado{
   display: flex;
   width: 500px;
   align-items: center;

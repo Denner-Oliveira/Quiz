@@ -3,10 +3,11 @@ let numQuestão = document.querySelector('#question-number')
 let valorQuestao = Number(document.querySelector('#question-number').textContent)
 let textoQuestao = document.querySelector('#question-text')
 let botoes = [...document.querySelectorAll('#answers-box button')]
-let final = document.querySelector('#resultado')
+let final = document.querySelector('.resultado')
 let txtAcertos = document.querySelector('#txtAcertos')
 let porAcertos = document.querySelector('#porAcertos')
 let usuario = document.querySelector('#paraUsuario')
+let botao = document.querySelector('#botao')
 
 let perguntas = [
     {
@@ -74,11 +75,18 @@ let perguntas = [
       },
 ]
 
+botao.addEventListener('click',init)
+
 let rodada;
 let acertos;
 
 function init(){
-  rodada = 0;acertos = 0;
+  botao.classList.add('hide');
+  quizz.classList.remove('hide');
+  final.classList.add('hide')
+  rodada = 0;
+  acertos = 0;
+  numQuestão.textContent = 0;
   questaoDaVez(rodada);
 }
 
@@ -142,6 +150,10 @@ function verificaAcertos(x){
   }
   txtAcertos.textContent = `De ${perguntas.length} perguntas você acertou ${x}`
   porAcertos.textContent = `${result.toFixed(2)}%`
+  setTimeout(()=>{
+    botao.textContent = 'Recomeçar!'
+    botao.classList.remove('hide')
+  },1500)
 }
 
-init()
+
